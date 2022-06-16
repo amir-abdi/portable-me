@@ -1,0 +1,10 @@
+## ZSH Custom Configs
+# if execution tookn more than 3 seconds, report it
+export REPORTTIME=3
+# Appends every command to the history file once it is executed
+setopt inc_append_history
+# Reloads the history whenever you use it
+setopt share_history
+# Plugins
+plugins=(git autojump zsh-autosuggestions)
+

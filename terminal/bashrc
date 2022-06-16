@@ -1,0 +1,56 @@
+# Set proxy
+uriencode() {
+  s="${1//'%'/%25}"
+  s="${s//' '/%20}"
+  s="${s//'!'/%21}"
+  s="${s//'\"'/%22}"
+  s="${s//'#'/%23}"
+  s="${s//'$'/%24}"
+  s="${s//'&'/%26}"
+  s="${s//'+'/%2B}"
+  s="${s//','/%2C}"
+  s="${s//'/'/%2F}"
+  s="${s//':'/%3A}"
+  s="${s//';'/%3B}"
+  s="${s//'='/%3D}"
+  s="${s//'?'/%3F}"
+  s="${s//'@'/%40}"
+  s="${s//'['/%5B}"
+  s="${s//']'/%5D}"
+  printf %s "$s"
+}
+ 
+function setproxy() {
+	read -s "?PROXY Password: " pswd
+	echo
+	export pswd_enc=$(uriencode "$pswd")
+	 
+	unset pswd
+	unset uriencode
+	 
+	export http_proxy=PROXY_SERVER
+	export https_proxy=$http_proxy
+
+	unset pswd_enc
+}
+
+function setproxy_cntlm() {
+    export {all,http,https,ftp}_proxy='http://localhost:3128'
+    export {ALL,HTTP,HTTPS,FTP}_PROXY='http://localhost:3128'
+    export NO_PROXY="127.0.0.*,10.*,172.*,192.168.*"
+    export no_proxy="127.0.0.*,10.*,172.*,192.168.*"
+}
+
+function unsetproxy() {
+    unset {all,http,https,ftp}_proxy
+    unset {ALL,HTTP,HTTPS,FTP}_PROXY
+}
+
+# S3 Functions
+function s3size() {
+	grep -v -E "(Bucket: |Prefix: |LastWriteTime|^$|--)" | awk 'BEGIN {total=0}{total+=$3}END{print total/1024/1024" MB"}'
+}
+
+# Format for SLURM SQUEUE
+export SQUEUE_FORMAT="%.18i %.9P %.60j %.8u %.2t %.10M %.6D %.20R %q"
+
