@@ -6,5 +6,4 @@ setopt inc_append_history
 # Reloads the history whenever you use it
 setopt share_history
 # Plugins
-plugins=(git autojump zsh-autosuggestions)
-
+plugins=(git macos python zsh-autosuggestions)

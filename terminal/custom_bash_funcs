@@ -54,3 +54,8 @@ function s3size() {
 # Format for SLURM SQUEUE
 export SQUEUE_FORMAT="%.18i %.9P %.60j %.8u %.2t %.10M %.6D %.20R %q"
 
+# Git author's contribution
+function git-blame() {
+git ls-files | while read f; do git blame --line-porcelain $f | grep '^author '; done | sort -f | uniq -ic | sort -n
+}
+
