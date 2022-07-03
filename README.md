@@ -29,6 +29,7 @@ The following are better be installed in the same order:
     - [auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
   - [Syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
   - Set the [profile](./terminal/zshrc)
+  - Prompt helper: [Starship](https://starship.rs/)
 - Git
   - [Git Quick Stats](https://github.com/arzzen/git-quick-stats)
 - Acronym Util: [WTF](https://formulae.brew.sh/formula/wtf)
